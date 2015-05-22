@@ -1,0 +1,19 @@
+{
+  "name": "cabtracker",
+  "version": "0.0.0",
+  "homepage": "https://github.com/doojin/cabtracker",
+  "authors": [
+    "Dmitry Papka <dmitry.papka@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "latest"
+  }
+}

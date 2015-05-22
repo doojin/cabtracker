@@ -1,0 +1,23 @@
+{
+  "name": "cabtracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doojin/cabtracker.git"
+  },
+  "author": "Dmitry Papka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doojin/cabtracker/issues"
+  },
+  "homepage": "https://github.com/doojin/cabtracker#readme",
+  "dependencies": {
+    "grunt": "latest",
+    "grunt-bower-task": "^0.4.0"
+  }
+}
