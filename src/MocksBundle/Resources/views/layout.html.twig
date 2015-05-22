@@ -2,9 +2,27 @@
 <html>
 <head>
     <title>Cab tracker</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/foundation/foundation.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/foundation-icons/foundation-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main.css') }}">
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+    <div class="grid row" data-equalizer>
+        <div class="small-3 left columns" data-equalizer-watch>
+            {{ include('MocksBundle:common:menu.html.twig') }}
+        </div>
+        <div class="small-9 right columns" data-equalizer-watch>
+            {% block tabs %}
+            {% endblock %}
+            <div class="content">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ asset('vendor/jquery/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/foundation/foundation.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/view.js') }}"></script>
 </body>
 </html>
