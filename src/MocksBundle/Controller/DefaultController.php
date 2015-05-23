@@ -72,4 +72,12 @@ class DefaultController extends Controller {
         return $this->render('MocksBundle:operators:operator.html.twig');
     }
 
+    /**
+     * @Route("/driver", name="driver")
+     */
+    public function driverAction()
+    {
+        return $this->render('MocksBundle:drivers:driver.html.twig');
+    }
+
 }
