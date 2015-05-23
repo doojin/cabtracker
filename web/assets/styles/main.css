@@ -38,6 +38,24 @@ html, body, .row.grid, .columns.left, .columns.right {
     margin-top: -1rem !important;
 }
 
+.header {
+    background-color: #D6D5E0;
+    border-bottom: solid 1px #33343D;
+    padding: 10px 0;
+}
+
+.header .row {
+    max-width: 100%;
+}
+
+.header .authorization-status {
+    color: #2F313D;
+    float: right;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
 .row.grid {
     max-width: 100%;
     min-height: 100%;
