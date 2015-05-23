@@ -14,7 +14,7 @@ html, body, .row.grid, .columns.left, .columns.right {
     background-color: #413F75;
 }
 
-.button:hover {
+.button:hover, .button:focus {
     background-color: #514F8F;
 }
 
@@ -54,6 +54,10 @@ html, body, .row.grid, .columns.left, .columns.right {
     font-size: 0.9em;
     font-weight: bold;
     padding-right: 20px;
+}
+
+.pagination li.current a, .pagination li.current button {
+    background-color: #413F75 !important;
 }
 
 .row.grid {

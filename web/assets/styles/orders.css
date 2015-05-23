@@ -1,0 +1,25 @@
+.orders {
+    width: 100%;
+}
+
+.orders .button {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.orders span {
+    border: none;
+}
+
+.orders span.waiting {
+    color: #6B272B;
+    font-weight: bold;
+}
+
+.orders span.progress {
+    color: #656B27;
+}
+
+.orders span.delivered {
+    color: #2D6B27;
+}

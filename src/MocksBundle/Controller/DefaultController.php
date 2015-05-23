@@ -31,4 +31,12 @@ class DefaultController extends Controller {
         return $this->render('MocksBundle:map:interactiveMap.html.twig');
     }
 
+    /**
+     * @Route("/orders", name="order-list")
+     */
+    public function orderListAction()
+    {
+        return $this->render('MocksBundle:orders:listOfOrders.html.twig');
+    }
+
 }

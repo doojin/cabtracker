@@ -1,0 +1,188 @@
+{% extends 'MocksBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>List of Orders</h1>
+    <div class="row">
+        <div class="small-6 columns">
+            <div class="tiny button">Add Order</div>
+        </div>
+        <div class="small-6 columns text-right">
+            <button data-dropdown="status" aria-controls="status" aria-expanded="false" class="tiny button dropdown">Status</button>
+            <br>
+            <ul id="status" data-dropdown-content class="f-dropdown" aria-hidden="true">
+                <li>
+                    <a href="#">Waiting</a>
+                </li>
+                <li>
+                    <a href="#">In Progress</a>
+                </li>
+                <li>
+                    <a href="#">Delivered</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <table class="orders">
+        <thead>
+        <tr>
+            <th>Received</th>
+            <th>Status</th>
+            <th>Address</th>
+            <th>Passengers</th>
+            <th width="145px">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1 hour(s), 20 minute(s) ago</td>
+            <td>
+                <span class="waiting">Waiting</span>
+            </td>
+            <td>Gertrudes iela 64-20</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>20 minute(s) ago</td>
+            <td>
+                <span class="progress">In Progress</span>
+            </td>
+            <td>Maskavas iela 13, k.2., House 69 (black doors)</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>13 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Center, Avotu iela 7</td>
+            <td>2</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2 hours 28 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Center, Ezeru iela 117</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3 hours 11 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Matisa iela 1</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>13 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Center, Avotu iela 7</td>
+            <td>2</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2 hours 28 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Center, Ezeru iela 117</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3 hours 11 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Matisa iela 1</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>13 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Center, Avotu iela 7</td>
+            <td>2</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2 hours 28 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Center, Ezeru iela 117</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3 hours 11 minute(s) ago</td>
+            <td>
+                <span class="delivered">Delivered</span>
+            </td>
+            <td>Matisa iela 1</td>
+            <td>1</td>
+            <td>
+                <a href="#"><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"></a>
+                <a href="#" class="tiny button">Edit/View</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination-centered">
+        <ul class="pagination">
+            <li class="arrow unavailable"><a href="">&laquo;</a></li>
+            <li class="current"><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li class="unavailable"><a href="">&hellip;</a></li>
+            <li><a href="">12</a></li>
+            <li><a href="">13</a></li>
+            <li class="arrow"><a href="">&raquo;</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/orders.css') }}">
+{% endblock %}
