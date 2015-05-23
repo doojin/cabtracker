@@ -94,6 +94,10 @@ html, body, .row.grid, .columns.left, .columns.right {
     background-color: #5D6A8F;
 }
 
+.switch input:checked + label {
+    background-color: #413F75;
+}
+
 .tabs {
     list-style-type: none;
     text-align: right;

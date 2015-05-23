@@ -1,0 +1,49 @@
+{% extends 'MocksBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Create New Account and Register a Company</h1>
+    <form>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Your Email Address:
+                    <input type="text" placeholder="email@example.com">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Password:
+                    <input type="password" placeholder="**********">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Password Again:
+                    <input type="password" placeholder="**********">
+                </label>
+                <small class="error">Your passwords don't match</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Company Name:
+                    <input type="text" placeholder="My Company">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <input type="submit" class="small button" value="Create">
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block tabs %}
+    {{ include('MocksBundle:authorization:tabs.html.twig', {'active': 1}) }}
+{% endblock %}

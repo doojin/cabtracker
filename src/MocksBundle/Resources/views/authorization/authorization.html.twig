@@ -1,13 +1,13 @@
 {% extends 'MocksBundle::layout.html.twig' %}
 
 {% block body %}
-    <h1>Create New Account and Register a Company</h1>
+    <h1>Login to System</h1>
     <form>
         <div class="row">
             <div class="small-12 columns">
                 <label>
-                    Your Email Address:
-                    <input type="text" placeholder="email@example.com">
+                    Your Login:
+                    <input type="text" placeholder="1000_mylogin">
                 </label>
             </div>
         </div>
@@ -20,33 +20,24 @@
             </div>
         </div>
         <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Password Again:
-                    <input type="password" placeholder="**********">
-                </label>
-                <small class="error">Your passwords don't match</small>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Company Name:
-                    <input type="text" placeholder="My Company">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
+            <div class="small-6 columns">
                 <input type="submit" class="small button" value="Create">
+            </div>
+            <div class="small-6 columns">
+                <div class="switch right">
+                    <span class="remember-me">Remember Me</span>
+                    <input id="rememberMe" type="checkbox">
+                    <label for="rememberMe"></label>
+                </div>
             </div>
         </div>
     </form>
 {% endblock %}
 
 {% block tabs %}
-    <ul class="tabs">
-        <li class="active"><a href="#">New Account</a></li>
-        <li><a hre="#">Login to System</a></li>
-    </ul>
+    {{ include('MocksBundle:authorization:tabs.html.twig', {'active': 2}) }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/sign-in-sign-up.css') }}">
 {% endblock %}

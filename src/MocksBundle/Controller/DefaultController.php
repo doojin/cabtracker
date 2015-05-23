@@ -15,4 +15,12 @@ class DefaultController extends Controller {
         return $this->render('MocksBundle:authorization:authorization.html.twig');
     }
 
+    /**
+     * @Route("/", name="new-account")
+     */
+    public function newAccountAction()
+    {
+        return $this->render('MocksBundle:authorization:newAccount.html.twig');
+    }
+
 }
