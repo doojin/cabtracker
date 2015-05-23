@@ -1,0 +1,24 @@
+{% extends 'MocksBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Interactive Map</h1>
+    <div id="map"></div>
+    <h1>Marking</h1>
+    <div class="row">
+        <div class="small-3 columns">
+            <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"> Client's Position
+        </div>
+        <div class="small-9 columns">
+            <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"> Taxi Driver's Position
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDPbveEF5zsP_XJXriLN3cHOpgof-j8Pj8"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/map.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/map.css') }}">
+{% endblock %}

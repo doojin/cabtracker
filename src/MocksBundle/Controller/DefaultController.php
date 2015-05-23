@@ -23,4 +23,12 @@ class DefaultController extends Controller {
         return $this->render('MocksBundle:authorization:newAccount.html.twig');
     }
 
+    /**
+     * @Route("/map", name="interactive-map")
+     */
+    public function interactiveMapAction()
+    {
+        return $this->render('MocksBundle:map:interactiveMap.html.twig');
+    }
+
 }
