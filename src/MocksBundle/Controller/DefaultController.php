@@ -55,4 +55,13 @@ class DefaultController extends Controller {
         return $this->render('MocksBundle:operators:operatorsList.html.twig');
     }
 
+
+    /**
+     * @Route("/drivers", name="drivers-list")
+     */
+    public function driversListAction()
+    {
+        return $this->render('MocksBundle:drivers:driversList.html.twig');
+    }
+
 }

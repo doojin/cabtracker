@@ -1,0 +1,15 @@
+.online {
+    color: #006600;
+}
+
+.offline {
+    color: #550000;
+}
+
+.drivers {
+    width: 100%;
+}
+
+.drivers .button {
+    margin: 0;
+}
