@@ -1,0 +1,15 @@
+.online {
+    color: #006600;
+}
+
+.offline {
+    color: #550000;
+}
+
+.operators {
+    width: 100%;
+}
+
+.operators .button {
+    margin: 0;
+}

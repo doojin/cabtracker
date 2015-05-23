@@ -47,4 +47,12 @@ class DefaultController extends Controller {
         return $this->render('MocksBundle:orders:newOrder.html.twig');
     }
 
+    /**
+     * @Route("/operators", name="operators-list")
+     */
+    public function operatorsListAction()
+    {
+        return $this->render('MocksBundle:operators:operatorsList.html.twig');
+    }
+
 }
