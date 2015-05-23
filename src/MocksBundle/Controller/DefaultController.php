@@ -39,4 +39,12 @@ class DefaultController extends Controller {
         return $this->render('MocksBundle:orders:listOfOrders.html.twig');
     }
 
+    /**
+     * @Route("/new-order", name="new-order")
+     */
+    public function newOrderAction()
+    {
+        return $this->render('MocksBundle:orders:newOrder.html.twig');
+    }
+
 }

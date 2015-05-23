@@ -1,0 +1,27 @@
+.comment-container  {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.comment {
+    height: 150px;
+}
+
+.driver {
+    display: inline-block;
+    margin: 20px 10px 0 10px;
+    width: 30%;
+}
+
+.driver span {
+    display: inline-block;
+    line-height: 28px;
+    margin-left: 10px;
+    vertical-align: top;
+}
+
+#map {
+    height: 300px;
+    margin-bottom: 10px;
+    width: 100%;
+}

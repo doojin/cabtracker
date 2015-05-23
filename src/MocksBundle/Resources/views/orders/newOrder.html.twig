@@ -1,0 +1,124 @@
+{% extends 'MocksBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>New Order</h1>
+    <form>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Address:
+                    <input type="text" placeholder="Start typing address" id="address">
+                </label>
+                <div id="map"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Client's Name:
+                    <input type="text" placeholder="First Name, Last Name">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Client's Phone Number:
+                    <input type="text" placeholder="Phone Number">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Number of Passengers:
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>More than 8</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Available Drivers:
+                </label>
+                <div class="driver tiny switch">
+                    <input id="driver1" type="checkbox">
+                    <label for="driver1"></label>
+                    <span>Alexander Piskaryov</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver2" type="checkbox">
+                    <label for="driver2"></label>
+                    <span>Andrey Samuilov</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver3" type="checkbox">
+                    <label for="driver3"></label>
+                    <span>Evgeny Bogdanov</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver4" type="checkbox">
+                    <label for="driver4"></label>
+                    <span>Irina Koshkina</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver5" type="checkbox">
+                    <label for="driver5"></label>
+                    <span>Semyon Kuznecov</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver6" type="checkbox">
+                    <label for="driver6"></label>
+                    <span>Vlada Volkova</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver7" type="checkbox">
+                    <label for="driver7"></label>
+                    <span>Andrey Pashuev</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver8" type="checkbox">
+                    <label for="driver8"></label>
+                    <span>Mihail Dobronov</span>
+                </div>
+                <div class="driver tiny switch">
+                    <input id="driver9" type="checkbox">
+                    <label for="driver9"></label>
+                    <span>Vasiliy Zloy</span>
+                </div>
+            </div>
+        </div>
+        <div class="row comment-container">
+            <div class="small-12 columns">
+                <label>
+                    Comment:
+                    <textarea class="comment"></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <input type="submit" class="small button" value="Create New Order">
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDPbveEF5zsP_XJXriLN3cHOpgof-j8Pj8"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/newOrder.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/newOrder.css') }}">
+{% endblock %}
