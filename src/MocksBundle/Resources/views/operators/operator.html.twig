@@ -1,0 +1,32 @@
+{% extends 'MocksBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>New Operator</h1>
+    <form>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Operator Full Name:
+                    <input type="text" placeholder="First name, Last name" id="full-name">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <label>
+                    Operator Login:
+                    <input type="text" disabled id="login">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <input type="submit" class="small button" value="Create">
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/operator.js') }}"></script>
+{% endblock %}
