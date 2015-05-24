@@ -2,6 +2,7 @@
 
 namespace MocksBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -66,6 +67,7 @@ class DefaultController extends Controller {
 
     /**
      * @Route("/operator", name="operator")
+     * @Method("GET")
      */
     public function operatorAction()
     {
@@ -74,10 +76,36 @@ class DefaultController extends Controller {
 
     /**
      * @Route("/driver", name="driver")
+     * @Method("GET")
      */
     public function driverAction()
     {
         return $this->render('MocksBundle:drivers:driver.html.twig');
     }
 
+    /**
+     * @Route("/operator", name="postOperator")
+     * @Method("POST")
+     */
+    public function operatorPostAction()
+    {
+        return $this->render('MocksBundle:common:operatorDriverSuccess.html.twig', array(
+            'operatorOrDriver' => 'Operator',
+            'userName' => '1000_dmitry.papka',
+            'password' => '3847242'
+        ));
+    }
+
+    /**
+     * @Route("/driver", name="postDriver")
+     * @Method("POST")
+     */
+    public function driverPostAction()
+    {
+        return $this->render('MocksBundle:common:operatorDriverSuccess.html.twig', array(
+            'operatorOrDriver' => 'Driver',
+            'userName' => '1000_dmitry.papka',
+            'password' => '3847242'
+        ));
+    }
 }
