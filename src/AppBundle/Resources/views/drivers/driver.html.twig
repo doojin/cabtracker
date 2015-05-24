@@ -2,29 +2,21 @@
 
 {% block body %}
     <h1>New Driver</h1>
-    <form method="POST">
-        <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Driver's Full Name:
-                    <input type="text" placeholder="First name, Last name" id="full-name">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Driver's Login:
-                    <input type="text" disabled id="login">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <input type="submit" class="small button" value="Create">
-            </div>
-        </div>
-    </form>
+    {{ form_start(newDriverForm) }}
+
+    {{ form_label(newDriverForm.fullName) }}
+    {{ form_widget(newDriverForm.fullName, {'id': 'full-name'}) }}
+    {{ form_errors(newDriverForm.fullName) }}
+
+    {{ form_label(newDriverForm.login) }}
+    {{ form_widget(newDriverForm.login, {'id': 'login'}) }}
+    {{ form_errors(newDriverForm.login) }}
+
+    {{ form_end(newDriverForm) }}
+
+    <script type="text/javascript">
+        var companyId = {{ app.session.get('userInfo').companyId }};
+    </script>
 {% endblock %}
 
 {% block scripts %}

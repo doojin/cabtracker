@@ -44,47 +44,4 @@ class DefaultController extends BaseController {
         $this->updateUserActivity();
         return $this->render('AppBundle:orders:newOrder.html.twig');
     }
-
-
-    /**
-     * @Route("/drivers", name="drivers-list")
-     */
-    public function driversListAction()
-    {
-        if (!$this->get('security_service')->isAuthorized($this)) {
-            return $this->redirectToRoute('authorization');
-        }
-        $this->updateUserActivity();
-        return $this->render('AppBundle:drivers:driversList.html.twig');
-    }
-
-    /**
-     * @Route("/driver", name="driver")
-     * @Method("GET")
-     */
-    public function driverAction()
-    {
-        if (!$this->get('security_service')->isAuthorized($this)) {
-            return $this->redirectToRoute('authorization');
-        }
-        $this->updateUserActivity();
-        return $this->render('AppBundle:drivers:driver.html.twig');
-    }
-
-    /**
-     * @Route("/driver", name="postDriver")
-     * @Method("POST")
-     */
-    public function driverPostAction()
-    {
-        if (!$this->get('security_service')->isAuthorized($this)) {
-            return $this->redirectToRoute('authorization');
-        }
-        $this->updateUserActivity();
-        return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
-            'operatorOrDriver' => 'Driver',
-            'userName' => '1000_dmitry.papka',
-            'password' => '3847242'
-        ));
-    }
 }

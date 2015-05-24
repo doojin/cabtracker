@@ -19,70 +19,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="online">Online</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="online">Online</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="online">Online</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="online">Online</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="offline">Offline</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="offline">Offline</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="offline">Offline</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dmitry Papka</td>
-                    <td>1000_dmitry.papka</td>
-                    <td><span class="offline">Offline</span></td>
-                    <td>
-                        <a href="#" class="tiny button">Edit/View</a>
-                    </td>
-                </tr>
+                {% for driver in drivers %}
+                    <tr>
+                        <td>{{ driver.name }}</td>
+                        <td>{{ driver.login }}</td>
+                        {% if driver.isOnline %}
+                            <td><span class="online">Online</span></td>
+                        {% else %}
+                            <td><span class="offline">Offline</span></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
