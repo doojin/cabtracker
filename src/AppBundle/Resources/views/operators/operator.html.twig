@@ -1,30 +1,24 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
+{% form_theme newOperatorForm 'AppBundle:common:forms.html.twig' %}
+
 {% block body %}
     <h1>New Operator</h1>
-    <form method="POST">
-        <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Operator Full Name:
-                    <input type="text" placeholder="First name, Last name" id="full-name">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Operator Login:
-                    <input type="text" disabled id="login">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <input type="submit" class="small button" value="Create">
-            </div>
-        </div>
-    </form>
+    {{ form_start(newOperatorForm) }}
+
+    {{ form_label(newOperatorForm.fullName) }}
+    {{ form_widget(newOperatorForm.fullName, {'id': 'full-name'}) }}
+    {{ form_errors(newOperatorForm.fullName) }}
+
+    {{ form_label(newOperatorForm.login) }}
+    {{ form_widget(newOperatorForm.login, {'id': 'login'}) }}
+    {{ form_errors(newOperatorForm.login) }}
+
+    {{ form_end(newOperatorForm) }}
+
+    <script type="text/javascript">
+        var companyId = {{ app.session.get('userInfo').companyId }};
+    </script>
 {% endblock %}
 
 {% block scripts %}

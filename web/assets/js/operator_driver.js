@@ -7,8 +7,6 @@ $(document).ready(function() {
     updateLogin();
 
     function updateLogin() {
-        var companyId = 1000;
-
         var fullName = fullNameField.val();
         var newLogin = companyId + '_' + fullName.replace(/ /g, '.').toLowerCase();
 

@@ -32,13 +32,13 @@ class User {
     protected $company;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Role")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Role", cascade={"merge", "persist"})
      * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
      */
     protected $role;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\AuthorizationData", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\AuthorizationData", cascade={"merge", "persist"})
      * @ORM\JoinColumn(name="authorization_data_id", referencedColumnName="id")
      */
     protected $authorizationData;

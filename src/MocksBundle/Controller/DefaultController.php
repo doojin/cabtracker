@@ -65,18 +65,6 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/operator", name="operator")
-     * @Method("GET")
-     */
-    public function operatorAction()
-    {
-        if (!$this->get('security_service')->isAuthorized($this)) {
-            return $this->redirectToRoute('authorization');
-        }
-        return $this->render('AppBundle:operators:operator.html.twig');
-    }
-
-    /**
      * @Route("/driver", name="driver")
      * @Method("GET")
      */
@@ -86,22 +74,6 @@ class DefaultController extends Controller {
             return $this->redirectToRoute('authorization');
         }
         return $this->render('AppBundle:drivers:driver.html.twig');
-    }
-
-    /**
-     * @Route("/operator", name="postOperator")
-     * @Method("POST")
-     */
-    public function operatorPostAction()
-    {
-        if (!$this->get('security_service')->isAuthorized($this)) {
-            return $this->redirectToRoute('authorization');
-        }
-        return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
-            'operatorOrDriver' => 'Operator',
-            'userName' => '1000_dmitry.papka',
-            'password' => '3847242'
-        ));
     }
 
     /**

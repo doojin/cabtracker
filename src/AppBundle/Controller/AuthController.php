@@ -125,7 +125,8 @@ class AuthController extends Controller {
             $userInfo = array(
                 'name' => $user->getFullName(),
                 'id' => $user->getId(),
-                'companyName' => $user->getCompany()->getName()
+                'companyName' => $user->getCompany()->getName(),
+                'companyId' => $user->getCompany()->getId()
             );
 
             $session = new Session();
