@@ -13,6 +13,9 @@ class DefaultController extends Controller {
      */
     public function interactiveMapAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:map:interactiveMap.html.twig');
     }
 
@@ -21,6 +24,9 @@ class DefaultController extends Controller {
      */
     public function orderListAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:orders:listOfOrders.html.twig');
     }
 
@@ -29,6 +35,9 @@ class DefaultController extends Controller {
      */
     public function newOrderAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:orders:newOrder.html.twig');
     }
 
@@ -37,6 +46,9 @@ class DefaultController extends Controller {
      */
     public function operatorsListAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:operators:operatorsList.html.twig');
     }
 
@@ -46,6 +58,9 @@ class DefaultController extends Controller {
      */
     public function driversListAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:drivers:driversList.html.twig');
     }
 
@@ -55,6 +70,9 @@ class DefaultController extends Controller {
      */
     public function operatorAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:operators:operator.html.twig');
     }
 
@@ -64,6 +82,9 @@ class DefaultController extends Controller {
      */
     public function driverAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:drivers:driver.html.twig');
     }
 
@@ -73,6 +94,9 @@ class DefaultController extends Controller {
      */
     public function operatorPostAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
             'operatorOrDriver' => 'Operator',
             'userName' => '1000_dmitry.papka',
@@ -86,6 +110,9 @@ class DefaultController extends Controller {
      */
     public function driverPostAction()
     {
+        if (!$this->get('security_service')->isAuthorized($this)) {
+            return $this->redirectToRoute('authorization');
+        }
         return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
             'operatorOrDriver' => 'Driver',
             'userName' => '1000_dmitry.papka',

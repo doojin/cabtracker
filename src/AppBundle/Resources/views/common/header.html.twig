@@ -1,8 +1,13 @@
+{% set userInfo = app.session.get('userInfo') %}
 <div class="header">
     <div class="row">
         <div class="small-12 columns">
+            <div class="company-name">
+                {% if userInfo is not empty %}
+                    {{ userInfo.companyName }}
+                {% endif %}
+            </div>
             <div class="authorization-status">
-                {% set userInfo = app.session.get('userInfo') %}
                 {% if userInfo is empty %}
                     <i class="fi-alert"></i> You are not logged into system
                 {% else %}

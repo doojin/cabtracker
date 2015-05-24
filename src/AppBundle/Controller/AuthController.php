@@ -124,7 +124,8 @@ class AuthController extends Controller {
 
             $userInfo = array(
                 'name' => $user->getFullName(),
-                'id' => $user->getId()
+                'id' => $user->getId(),
+                'companyName' => $user->getCompany()->getName()
             );
 
             $session = new Session();
@@ -136,5 +137,17 @@ class AuthController extends Controller {
         return $this->render('AppBundle:authorization:authorization.html.twig', array(
             'authorizationForm' => $form->createView()
         ));
+    }
+
+    /**
+     * @Route("/logoff", name="log-off")
+     * @Method("GET")
+     */
+    public function logOffAction()
+    {
+        $session = new Session();
+        $session->remove('userInfo');
+
+        return $this->redirectToRoute('authorization');
     }
 }

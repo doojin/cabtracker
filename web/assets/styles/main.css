@@ -56,6 +56,14 @@ html, body, .row.grid, .columns.left, .columns.right {
     padding-right: 20px;
 }
 
+.header .company-name {
+    color: #2F313D;
+    float: left;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
 .pagination li.current a, .pagination li.current button {
     background-color: #413F75 !important;
 }

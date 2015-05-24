@@ -1,5 +1,7 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
+{% form_theme authorizationForm 'AppBundle:common:forms.html.twig' %}
+
 {% block body %}
     <h1>Login to System</h1>
     {{ form_start(authorizationForm) }}

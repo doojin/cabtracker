@@ -35,4 +35,13 @@
             Help: How to Use?
         </a>
     </li>
+    {% set userInfo = app.session.get('userInfo') %}
+    {% if userInfo is not empty %}
+    <li>
+        <a href="{{ url('log-off') }}">
+            <i class="fi-lock"></i>
+            Log off
+        </a>
+    </li>
+    {% endif %}
 </ul>

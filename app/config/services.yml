@@ -4,6 +4,12 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    security_service:
+        class: AppBundle\SecurityService
+        arguments: []
+    validator.user_exists:
+      class: AppBundle\Validator\Constraints\UserExistsValidator
+      arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+      tags:
+        - { name: validator.constraint_validator, alias: user_exists_validator }
