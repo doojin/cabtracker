@@ -2,15 +2,19 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\AppBundle;
 use AppBundle\Entity\AuthorizationData;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\User;
+use AppBundle\Form\Model\AuthorizationModel;
 use AppBundle\Form\Model\NewAccountModel;
+use AppBundle\Form\Type\AuthorizationType;
 use AppBundle\Form\Type\NewAccountType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class AuthController extends Controller {
 
@@ -51,7 +55,7 @@ class AuthController extends Controller {
             $administratorRole = $this->getDoctrine()->getRepository('AppBundle\Entity\Role')->findOneById(1);
 
             $authData = new AuthorizationData();
-            $authData->setPassword(password_hash($data->getPassword(), PASSWORD_DEFAULT));
+            $authData->setPassword(crypt($data->getPassword(), AppBundle::$hash));
             $authData->setLogin($data->getLogin());
 
             $user = new User();
@@ -69,6 +73,68 @@ class AuthController extends Controller {
 
         return $this->render('AppBundle:authorization:newAccount.html.twig', array(
             'newAccountForm' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/authorization", name="authorization")
+     * @Method("GET")
+     */
+    public function authorizationAction()
+    {
+        $authorizationModel = new AuthorizationModel();
+
+        $form = $this->createForm(new AuthorizationType(), $authorizationModel);
+
+        return $this->render('AppBundle:authorization:authorization.html.twig', array(
+            'authorizationForm' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/authorization", name="authorization-post")
+     * @Method("POST")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function authorizationPostAction(Request $request)
+    {
+        $authorizationModel = new AuthorizationModel();
+
+        $form = $this->createForm(new AuthorizationType(), $authorizationModel);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $data = $form->getData();
+
+            $login = $data->getLogin();
+            $password = crypt($data->getPassword(), AppBundle::$hash);
+
+            $authorizationData = $this->getDoctrine()
+                ->getRepository('AppBundle\Entity\AuthorizationData')
+                ->findOneBy(
+                    array('login' => $login, 'password' => $password)
+                );
+
+            $user = $this->getDoctrine()
+                ->getRepository('AppBundle\Entity\User')
+                ->findOneBy(array(
+                    'authorizationData' => $authorizationData->getId()
+                ));
+
+            $userInfo = array(
+                'name' => $user->getFullName(),
+                'id' => $user->getId()
+            );
+
+            $session = new Session();
+            $session->set('userInfo', $userInfo);
+
+            return $this->redirectToRoute('order-list');
+        }
+
+        return $this->render('AppBundle:authorization:authorization.html.twig', array(
+            'authorizationForm' => $form->createView()
         ));
     }
 }

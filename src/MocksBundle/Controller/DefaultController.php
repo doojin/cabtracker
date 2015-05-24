@@ -9,14 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller {
 
     /**
-     * @Route("/authorization", name="authorization")
-     */
-    public function authorizationAction()
-    {
-        return $this->render('AppBundle:authorization:authorization.html.twig');
-    }
-
-    /**
      * @Route("/map", name="interactive-map")
      */
     public function interactiveMapAction()

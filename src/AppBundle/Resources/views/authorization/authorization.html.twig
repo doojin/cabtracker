@@ -2,40 +2,21 @@
 
 {% block body %}
     <h1>Login to System</h1>
-    <form>
-        <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Your Login:
-                    <input type="text" placeholder="1000_mylogin">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <label>
-                    Password:
-                    <input type="password" placeholder="**********">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 columns">
-                <input type="submit" class="small button" value="Sign In">
-            </div>
-            <div class="small-6 columns">
-                <div class="switch right">
-                    <span class="remember-me">Remember Me</span>
-                    <input id="rememberMe" type="checkbox">
-                    <label for="rememberMe"></label>
-                </div>
-            </div>
-        </div>
-    </form>
+    {{ form_start(authorizationForm) }}
+
+    {{ form_label(authorizationForm.login) }}
+    {{ form_widget(authorizationForm.login) }}
+    {{ form_errors(authorizationForm.login) }}
+
+    {{ form_label(authorizationForm.password) }}
+    {{ form_widget(authorizationForm.password) }}
+    {{ form_errors(authorizationForm.password) }}
+
+    {{ form_end(authorizationForm) }}
 {% endblock %}
 
 {% block tabs %}
-    {{ include('MocksBundle:authorization:tabs.html.twig', {'active': 2}) }}
+    {{ include('AppBundle:authorization:tabs.html.twig', {'active': 2}) }}
 {% endblock %}
 
 {% block stylesheets %}
