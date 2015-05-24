@@ -44,6 +44,12 @@ class User {
     protected $authorizationData;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Activity", cascade={"merge", "persist"})
+     * @ORM\JoinColumn(name="activity_id", referencedColumnName="id")
+     */
+    protected $activity;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -123,5 +129,19 @@ class User {
         $this->authorizationData = $authorizationData;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
 
+    /**
+     * @param mixed $activity
+     */
+    public function setActivity($activity)
+    {
+        $this->activity = $activity;
+    }
 }

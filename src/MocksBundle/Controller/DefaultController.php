@@ -2,11 +2,11 @@
 
 namespace MocksBundle\Controller;
 
+use AppBundle\Controller\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller {
+class DefaultController extends BaseController {
 
     /**
      * @Route("/map", name="interactive-map")
@@ -16,6 +16,7 @@ class DefaultController extends Controller {
         if (!$this->get('security_service')->isAuthorized($this)) {
             return $this->redirectToRoute('authorization');
         }
+        $this->updateUserActivity();
         return $this->render('AppBundle:map:interactiveMap.html.twig');
     }
 
@@ -27,6 +28,7 @@ class DefaultController extends Controller {
         if (!$this->get('security_service')->isAuthorized($this)) {
             return $this->redirectToRoute('authorization');
         }
+        $this->updateUserActivity();
         return $this->render('AppBundle:orders:listOfOrders.html.twig');
     }
 
@@ -38,18 +40,9 @@ class DefaultController extends Controller {
         if (!$this->get('security_service')->isAuthorized($this)) {
             return $this->redirectToRoute('authorization');
         }
-        return $this->render('AppBundle:orders:newOrder.html.twig');
-    }
 
-    /**
-     * @Route("/operators", name="operators-list")
-     */
-    public function operatorsListAction()
-    {
-        if (!$this->get('security_service')->isAuthorized($this)) {
-            return $this->redirectToRoute('authorization');
-        }
-        return $this->render('AppBundle:operators:operatorsList.html.twig');
+        $this->updateUserActivity();
+        return $this->render('AppBundle:orders:newOrder.html.twig');
     }
 
 
@@ -61,6 +54,7 @@ class DefaultController extends Controller {
         if (!$this->get('security_service')->isAuthorized($this)) {
             return $this->redirectToRoute('authorization');
         }
+        $this->updateUserActivity();
         return $this->render('AppBundle:drivers:driversList.html.twig');
     }
 
@@ -73,6 +67,7 @@ class DefaultController extends Controller {
         if (!$this->get('security_service')->isAuthorized($this)) {
             return $this->redirectToRoute('authorization');
         }
+        $this->updateUserActivity();
         return $this->render('AppBundle:drivers:driver.html.twig');
     }
 
@@ -85,6 +80,7 @@ class DefaultController extends Controller {
         if (!$this->get('security_service')->isAuthorized($this)) {
             return $this->redirectToRoute('authorization');
         }
+        $this->updateUserActivity();
         return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
             'operatorOrDriver' => 'Driver',
             'userName' => '1000_dmitry.papka',

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\AppBundle;
+use AppBundle\Entity\Activity;
 use AppBundle\Entity\AuthorizationData;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\User;
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class AuthController extends Controller {
+class AuthController extends BaseController {
 
     /**
      * @Route("/", name="new-account")
@@ -28,6 +29,7 @@ class AuthController extends Controller {
 
         $form = $this->createForm(new NewAccountType(), $newAccount);
 
+        $this->updateUserActivity();
         return $this->render('AppBundle:authorization:newAccount.html.twig', array(
             'newAccountForm' => $form->createView()
         ));
@@ -58,11 +60,16 @@ class AuthController extends Controller {
             $authData->setPassword(crypt($data->getPassword(), AppBundle::$hash));
             $authData->setLogin($data->getLogin());
 
+            $activity = new Activity();
+            $activity->setTimestamp(0);
+
             $user = new User();
             $user->setFullName($data->getFullName());
             $user->setCompany($company);
             $user->setRole($administratorRole);
             $user->setAuthorizationData($authData);
+            $user->setActivity($activity);
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
@@ -71,6 +78,7 @@ class AuthController extends Controller {
             return $this->redirectToRoute('order-list');
         }
 
+        $this->updateUserActivity();
         return $this->render('AppBundle:authorization:newAccount.html.twig', array(
             'newAccountForm' => $form->createView()
         ));
@@ -86,6 +94,7 @@ class AuthController extends Controller {
 
         $form = $this->createForm(new AuthorizationType(), $authorizationModel);
 
+        $this->updateUserActivity();
         return $this->render('AppBundle:authorization:authorization.html.twig', array(
             'authorizationForm' => $form->createView()
         ));
@@ -126,15 +135,18 @@ class AuthController extends Controller {
                 'name' => $user->getFullName(),
                 'id' => $user->getId(),
                 'companyName' => $user->getCompany()->getName(),
-                'companyId' => $user->getCompany()->getId()
+                'companyId' => $user->getCompany()->getId(),
+                'activityId' => $user->getActivity()->getId()
             );
 
             $session = new Session();
             $session->set('userInfo', $userInfo);
 
+            $this->updateUserActivity();
             return $this->redirectToRoute('order-list');
         }
 
+        $this->updateUserActivity();
         return $this->render('AppBundle:authorization:authorization.html.twig', array(
             'authorizationForm' => $form->createView()
         ));
@@ -149,6 +161,7 @@ class AuthController extends Controller {
         $session = new Session();
         $session->remove('userInfo');
 
+        $this->updateUserActivity();
         return $this->redirectToRoute('authorization');
     }
 }

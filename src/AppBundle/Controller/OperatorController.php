@@ -4,12 +4,10 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\AppBundle;
+use AppBundle\Entity\Activity;
 use AppBundle\Entity\AuthorizationData;
-use AppBundle\Entity\Company;
-use AppBundle\Entity\Role;
 use AppBundle\Entity\User;
 use AppBundle\Form\Model\NewOperatorModel;
-use AppBundle\Form\Type\AuthorizationType;
 use AppBundle\Form\Type\NewOperatorType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -30,6 +28,7 @@ class OperatorController extends BaseController
 
         $form = $this->createForm(new NewOperatorType(), $newAccount);
 
+        $this->updateUserActivity();
         return $this->render('AppBundle:operators:operator.html.twig', array(
             'newOperatorForm' => $form->createView()
         ));
@@ -67,6 +66,9 @@ class OperatorController extends BaseController
             $authorizationData->setLogin($login);
             $authorizationData->setPassword(crypt($password, AppBundle::$hash));
 
+            $activity = new Activity();
+            $activity->setTimestamp(0);
+
             $role = $em->getRepository('AppBundle\Entity\Role')
                 ->find(2);
 
@@ -75,10 +77,12 @@ class OperatorController extends BaseController
             $user->setAuthorizationData($authorizationData);
             $user->setCompany($company);
             $user->setRole($role);
+            $user->setActivity($activity);
 
             $em->persist($user);
             $em->flush();
 
+            $this->updateUserActivity();
             return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
                 'operatorOrDriver' => 'Operator',
                 'userName' => $login,
@@ -86,8 +90,47 @@ class OperatorController extends BaseController
             ));
         }
 
+        $this->updateUserActivity();
         return $this->render('AppBundle:operators:operator.html.twig', array(
             'newOperatorForm' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/operators", name="operators-list")
+     */
+    public function operatorsListAction()
+    {
+        $this->shouldBeAuthorized();
+
+        $session = new Session();
+        $companyId = $session->get('userInfo')['companyId'];
+
+        $operators = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle\Entity\User')
+            ->findBy(array(
+                'role' => 2,
+                'company' => $companyId
+            ));
+
+        $operatorsInfo = array();
+
+        foreach ($operators as $operator) {
+            $isOnline = false;
+            if (time() - $operator->getActivity()->getTimestamp() < 60*3) {
+                $isOnline = true;
+            }
+            $operatorsInfo[] = array(
+                'name' => $operator->getFullName(),
+                'login' => $operator->getAuthorizationData()->getLogin(),
+                'isOnline' => $isOnline
+            );
+        }
+
+        $this->updateUserActivity();
+        return $this->render('AppBundle:operators:operatorsList.html.twig', array(
+            'operators' => $operatorsInfo
         ));
     }
 }
