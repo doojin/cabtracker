@@ -1,0 +1,34 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% form_theme newAccountForm 'AppBundle:common:forms.html.twig' %}
+
+{% block body %}
+    <h1>Create New Account and Register a Company</h1>
+    {{ form_start(newAccountForm) }}
+
+    {{ form_label(newAccountForm.login) }}
+    {{ form_widget(newAccountForm.login) }}
+    {{ form_errors(newAccountForm.login) }}
+
+    {{ form_label(newAccountForm.fullName) }}
+    {{ form_widget(newAccountForm.fullName) }}
+    {{ form_errors(newAccountForm.fullName) }}
+
+    {{ form_label(newAccountForm.password) }}
+    {{ form_widget(newAccountForm.password) }}
+    {{ form_errors(newAccountForm.password) }}
+
+    {{ form_label(newAccountForm.passwordAgain) }}
+    {{ form_widget(newAccountForm.passwordAgain) }}
+    {{ form_errors(newAccountForm.passwordAgain) }}
+
+    {{ form_label(newAccountForm.companyName) }}
+    {{ form_widget(newAccountForm.companyName) }}
+    {{ form_errors(newAccountForm.companyName) }}
+
+    {{ form_end(newAccountForm) }}
+{% endblock %}
+
+{% block tabs %}
+    {{ include('MocksBundle:authorization:tabs.html.twig', {'active': 1}) }}
+{% endblock %}

@@ -1,3 +1,7 @@
 mocks:
   resource: "@MocksBundle/Controller/"
   type: annotation
+
+app:
+  resource: "@AppBundle/Controller/"
+  type: annotation

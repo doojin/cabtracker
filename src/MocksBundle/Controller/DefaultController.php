@@ -13,15 +13,7 @@ class DefaultController extends Controller {
      */
     public function authorizationAction()
     {
-        return $this->render('MocksBundle:authorization:authorization.html.twig');
-    }
-
-    /**
-     * @Route("/", name="new-account")
-     */
-    public function newAccountAction()
-    {
-        return $this->render('MocksBundle:authorization:newAccount.html.twig');
+        return $this->render('AppBundle:authorization:authorization.html.twig');
     }
 
     /**
@@ -29,7 +21,7 @@ class DefaultController extends Controller {
      */
     public function interactiveMapAction()
     {
-        return $this->render('MocksBundle:map:interactiveMap.html.twig');
+        return $this->render('AppBundle:map:interactiveMap.html.twig');
     }
 
     /**
@@ -37,7 +29,7 @@ class DefaultController extends Controller {
      */
     public function orderListAction()
     {
-        return $this->render('MocksBundle:orders:listOfOrders.html.twig');
+        return $this->render('AppBundle:orders:listOfOrders.html.twig');
     }
 
     /**
@@ -45,7 +37,7 @@ class DefaultController extends Controller {
      */
     public function newOrderAction()
     {
-        return $this->render('MocksBundle:orders:newOrder.html.twig');
+        return $this->render('AppBundle:orders:newOrder.html.twig');
     }
 
     /**
@@ -53,7 +45,7 @@ class DefaultController extends Controller {
      */
     public function operatorsListAction()
     {
-        return $this->render('MocksBundle:operators:operatorsList.html.twig');
+        return $this->render('AppBundle:operators:operatorsList.html.twig');
     }
 
 
@@ -62,7 +54,7 @@ class DefaultController extends Controller {
      */
     public function driversListAction()
     {
-        return $this->render('MocksBundle:drivers:driversList.html.twig');
+        return $this->render('AppBundle:drivers:driversList.html.twig');
     }
 
     /**
@@ -71,7 +63,7 @@ class DefaultController extends Controller {
      */
     public function operatorAction()
     {
-        return $this->render('MocksBundle:operators:operator.html.twig');
+        return $this->render('AppBundle:operators:operator.html.twig');
     }
 
     /**
@@ -80,7 +72,7 @@ class DefaultController extends Controller {
      */
     public function driverAction()
     {
-        return $this->render('MocksBundle:drivers:driver.html.twig');
+        return $this->render('AppBundle:drivers:driver.html.twig');
     }
 
     /**
@@ -89,7 +81,7 @@ class DefaultController extends Controller {
      */
     public function operatorPostAction()
     {
-        return $this->render('MocksBundle:common:operatorDriverSuccess.html.twig', array(
+        return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
             'operatorOrDriver' => 'Operator',
             'userName' => '1000_dmitry.papka',
             'password' => '3847242'
@@ -102,7 +94,7 @@ class DefaultController extends Controller {
      */
     public function driverPostAction()
     {
-        return $this->render('MocksBundle:common:operatorDriverSuccess.html.twig', array(
+        return $this->render('AppBundle:common:operatorDriverSuccess.html.twig', array(
             'operatorOrDriver' => 'Driver',
             'userName' => '1000_dmitry.papka',
             'password' => '3847242'

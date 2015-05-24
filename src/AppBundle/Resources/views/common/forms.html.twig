@@ -1,0 +1,7 @@
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        {% for error in errors %}
+            <small class="error">{{ error.message }}</small>
+        {% endfor %}
+    {%  endif %}
+{% endblock form_errors %}
